@@ -1,0 +1,63 @@
+Title: BenchQ CO Bond Length Scan (Strict Reproduction Task)
+
+Task:
+Use BenchQ to run resource estimation for CO only, scanning the bond length over the following exact values (in angstrom):
+
+0.83, 0.93, 1.03, 1.13, 1.23, 1.33
+
+
+Reference Configuration (Must Stay Consistent):
+
+Molecule:
+- CO
+
+System Parameters:
+- n_orbitals = 10
+- threshold = 1e-10
+
+Physical Cost Model Assumptions:
+- hardware_failure_tolerance_per_shot = 0.001
+- n_factories = 4
+- physical_error_rate = 0.001
+- cycle_time_us = 1.0
+
+Notes:
+- t_gates_not_supported = true
+- benchq_issue_165_num_toffoli_multiplier = 4
+- factory_family = "Litinski"
+
+
+Output Format:
+
+Return results in a structured table with at least the following fields:
+
+- molecule
+- bond_length
+- file
+- n_orbitals
+- n_h1_nonzero
+- n_eri_nonzero
+- lambda_approx
+- lambda_per_orbital
+- ecore
+- h1_fro_norm
+- eri_fro_norm
+- h1_max_abs
+- eri_max_abs
+- sparsity_h1
+- sparsity_eri
+- threshold
+- toffoli_count
+- logical_qubits
+- physical_cost_model.assumptions
+- physical_cost_model.core.n_physical_qubits
+- physical_cost_model.core.code_distance
+- physical_cost_model.core.total_time_in_seconds
+- physical_cost_model.core.logical_error_rate
+- physical_cost_model.core.magic_state_factory_name
+
+---
+
+Final Requirement:
+
+Include a short summary describing how the resource estimates change as the CO bond length increases from 0.83 Å to 1.33 Å.
